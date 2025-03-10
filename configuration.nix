@@ -19,7 +19,6 @@
     FLAKE = "home/${userSettings.username}/.dotfiles";
   };
 
-#   networking.hostName = "ophidian"; # Define your hostname.
   networking.hostName = systemSettings.hostname; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -106,15 +105,6 @@
     #  thunderbird
     ];
    };
-#     users.users.loris = {
-#     isNormalUser = true;
-#     description = "loris";
-#     extraGroups = [ "networkmanager" "wheel" ];
-#     packages = with pkgs; [
-#       kdePackages.kate
-#     #  thunderbird
-#     ];
-#   };
 
   # Install firefox.
   programs.firefox.enable = true;
