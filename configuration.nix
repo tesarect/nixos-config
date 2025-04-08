@@ -68,6 +68,7 @@
     variant = "";
   };
 
+  fonts.packages = with pkgs; [ nerdfonts ];
 
 #   # Automatic updating and cleanup
 #   # updating

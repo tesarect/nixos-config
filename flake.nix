@@ -9,9 +9,11 @@
         home-manager.url = "github:nix-community/home-manager";
         home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+        nvf.url = "github:notashelf/nvf";
+
     };
 
-    outputs = {self, nixpkgs, nixpkgs-unstable, home-manager, ... }:
+    outputs = {self, nixpkgs, nixpkgs-unstable, home-manager, nvf, ... }@inputs:
         let
             systemSettings = {
                 system = "x86_64-linux";
@@ -28,6 +30,15 @@
             pkgs-unstable = nixpkgs-unstable.legacyPackages.${systemSettings.system};
 
         in {
+        # nvf standalone setup
+        packages.${system}.default =
+        (nvf.lib.neovimConfiguration {
+            pkgs = nixpkgs.legacyPackages.${system};
+            modules = [
+                ./editors/nvf/nvf.nix
+            ];
+        }).neovim;
+
         nixosConfigurations = {
             ophidian = lib.nixosSystem {
 #                 system = systemSettings.system;
@@ -38,6 +49,7 @@
                 };
                 modules = [
                     ./configuration.nix
+                    nvf.nixosModules.default    # nvf
                     home-manager.nixosModules.home-manager
                     {
                         home-manager = {
@@ -46,7 +58,7 @@
                         users.${userSettings.username} = import ./home.nix;
 
                         extraSpecialArgs = {
-                            inherit systemSettings userSettings pkgs-unstable;
+                            inherit systemSettings userSettings pkgs-unstable inputs;
                             };
                         };
                     }
