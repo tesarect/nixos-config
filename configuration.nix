@@ -2,12 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, systemSettings, userSettings, ... }:
+{ config, pkgs, pkgs-unstable, systemSettings, userSettings, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./shell/zsh.nix
     ];
 
   # Bootloader.
@@ -18,6 +19,12 @@
   environment.sessionVariables = {
     FLAKE = "home/${userSettings.username}/.dotfiles";
   };
+
+  # Shell - zsh as default
+  environment.shells = with pkgs; [ zsh ];
+  users.defaultUserShell = pkgs.zsh;
+  programs.zsh.enable = true;
+# check if this works or clean up straight away
 
   networking.hostName = systemSettings.hostname; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -122,6 +129,7 @@
     wget
     git
     fastfetch
+    zsh-powerlevel10k
 
     # Office tools
     libreoffice-qt
@@ -132,10 +140,17 @@
     # Tools
     fzf
     nix-output-monitor
+    nvd
+
+    # git
+    gittyup
 
     # language and static analyzers
     nixd
-  ];
+  ] ++ (with pkgs-unstable; [
+    # Unstable packages
+    nh
+  ]);
 
   # setting default editor as vim
   environment.variables.EDITOR = "vim";

@@ -1,5 +1,9 @@
-{ config, pkgs, systemSettings, userSettings, ... }: {
+{ config, pkgs, pkgs-unstable, systemSettings, userSettings, ... }: {
   # Home Manager configuration
+
+  imports = [
+#     ./shell/sh.nix
+  ];
 
   home.username = userSettings.username;
   home.homeDirectory = "/home/${userSettings.username}";
@@ -20,13 +24,15 @@
 
   programs.fzf = {
     enable = true;
-#     enableZshIntegration = true;
+    enableZshIntegration = true;
   };
 
   home.packages = with pkgs; [
     hello
     htop
-  ];
+  ] ++ (with pkgs-unstable; [
+    # Unstable packages
+  ]);
 
   # Required for home-manager
   home.stateVersion = "24.11"; # Use your NixOS version

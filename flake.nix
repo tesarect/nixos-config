@@ -11,9 +11,8 @@
 
     };
 
-    outputs = {self, nixpkgs, home-manager, ... }:
+    outputs = {self, nixpkgs, nixpkgs-unstable, home-manager, ... }:
         let
-            lib = nixpkgs.lib;
             systemSettings = {
                 system = "x86_64-linux";
                 hostname = "ophidian";
@@ -22,13 +21,20 @@
                 username = "loris";
                 dotfilesDir = "~/.dotfiles";
             };
+
+            lib = nixpkgs.lib;
+            system = systemSettings.system;
+            pkgs = nixpkgs.legacyPackages.${systemSettings.system};
+            pkgs-unstable = nixpkgs-unstable.legacyPackages.${systemSettings.system};
+
         in {
         nixosConfigurations = {
             ophidian = lib.nixosSystem {
-                system = systemSettings.system;
+#                 system = systemSettings.system;
                 specialArgs = {
                     inherit systemSettings;
                     inherit userSettings;
+                    inherit pkgs-unstable;
                 };
                 modules = [
                     ./configuration.nix
@@ -40,7 +46,7 @@
                         users.${userSettings.username} = import ./home.nix;
 
                         extraSpecialArgs = {
-                            inherit systemSettings userSettings;
+                            inherit systemSettings userSettings pkgs-unstable;
                             };
                         };
                     }
