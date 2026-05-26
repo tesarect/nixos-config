@@ -1,0 +1,41 @@
+
+Executing FocusLost Autocommands for "*"
+autocommand <Lua 22: /nix/store/g9cj33ia7ga8ijyr5dz3bflw1rmwac4n-neovim-pack-dir/pack/mnw/start/which-key-nvim/lua/which-key/state.lua:68>
+
+Executing CursorMoved Autocommands for "*"
+autocommand call s:Highlight_Matching_Pair()
+
+Executing CursorMoved Autocommands for "NvimTree_*"
+autocommand <Lua 260: /nix/store/g9cj33ia7ga8ijyr5dz3bflw1rmwac4n-neovim-pack-dir/pack/mnw/opt/nvim-tree-lua/lua/nvim-tree/explorer/init.lua:170>
+
+Executing TextChanged Autocommands for "*"
+autocommand call s:Highlight_Matching_Pair()
+
+Executing FocusGained Autocommands for "*"
+autocommand <Lua 177: /nix/store/g9cj33ia7ga8ijyr5dz3bflw1rmwac4n-neovim-pack-dir/pack/mnw/start/which-key-nvim/lua/which-key/state.lua:68>
+
+Executing ModeChanged Autocommands for "*"
+autocommand <Lua 336: /nix/store/g9cj33ia7ga8ijyr5dz3bflw1rmwac4n-neovim-pack-dir/pack/mnw/start/which-key-nvim/lua/which-key/state.lua:93>
+
+
+Executing ExitPre Autocommands for "*"
+autocommand <Lua 182: /nix/store/g9cj33ia7ga8ijyr5dz3bflw1rmwac4n-neovim-pack-dir/pack/mnw/start/nvim-dap/lua/dap.lua:1347>
+
+Executing BufWinLeave Autocommands for "*"
+autocommand <Lua 140: /nix/store/g9cj33ia7ga8ijyr5dz3bflw1rmwac4n-neovim-pack-dir/pack/mnw/start/conform-nvim/lua/conform/init.lua:193>
+
+Executing BufUnload Autocommands for "*"
+autocommand <Lua 256: /nix/store/g9cj33ia7ga8ijyr5dz3bflw1rmwac4n-neovim-pack-dir/pack/mnw/opt/nvim-tree-lua/lua/nvim-tree/explorer/init.lua:124>
+
+Executing VimLeavePre Autocommands for "*"
+autocommand <Lua 130: /nix/store/j28bnn9bjn4wf8zlhw3lddfk42p4f0i8-neovim-unwrapped-0.10.2/share/nvim/runtime/lua/vim/lsp.lua:797>
+
+Executing VimLeavePre Autocommands for "*"
+autocommand <Lua 138: /nix/store/g9cj33ia7ga8ijyr5dz3bflw1rmwac4n-neovim-pack-dir/pack/mnw/start/conform-nvim/lua/conform/init.lua:127>
+
+autocommand <Lua 141: /nix/store/g9cj33ia7ga8ijyr5dz3bflw1rmwac4n-neovim-pack-dir/pack/mnw/start/conform-nvim/lua/conform/init.lua:204>
+
+Executing VimLeavePre Autocommands for "*"
+autocommand <Lua 384: /nix/store/g9cj33ia7ga8ijyr5dz3bflw1rmwac4n-neovim-pack-dir/pack/mnw/opt/nvim-cmp/lua/cmp/utils/async.lua:17>
+
+Writing ShaDa file "/home/arvindh/.local/state/nvf/shada/main.shada"

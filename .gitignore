@@ -1,0 +1,20 @@
+# Nix build outputs
+result
+result-*
+
+# Nix direnv
+.direnv/
+.envrc
+
+# Age private key - NEVER commit
+keys.txt
+
+# Editor artifacts
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS artifacts
+.DS_Store
+Thumbs.db
