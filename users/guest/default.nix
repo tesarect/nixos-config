@@ -14,12 +14,6 @@
     # Enable home-manager for this user
     programs.home-manager.enable = true;
 
-    # Install Firefox
-    programs.firefox = {
-      enable = true;
-      # You can add Firefox customizations here if needed
-    };
-
     # Basic home configuration
     home = {
       username = "guest";
@@ -31,6 +25,7 @@
       packages = with pkgs; [
         # Any additional packages for this user
         teams-for-linux
+        brave
       ];
     };
   };

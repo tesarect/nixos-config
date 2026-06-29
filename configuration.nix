@@ -178,7 +178,11 @@
   # Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-
+  # Limit parallel builds to avoid OOM during heavy rebuilds
+  # - When build fails due to shortage of ram size use this
+  #   or directly the cmd `nh os switch -H system -- --max-jobs 2 --cores 4`
+  # nix.settings.max-jobs = 2;
+  # nix.settings.cores = 4;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -198,6 +202,13 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Skip OpenBLAS test suite during builds (zblat3 can hang for many hours)
+  nixpkgs.overlays = [
+    (final: prev: {
+      openblas = prev.openblas.overrideAttrs (_: { doCheck = false; });
+    })
+  ];
+
   # virt-manager
   programs.virt-manager.enable = true;
   users.groups.libvirtd.members = [userSettings.username];
@@ -213,18 +224,12 @@
   ( with pkgs; [
     # list of unstable packages
     ghostty
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    vim
     wl-clipboard
     maliit-keyboard
     wget
-    neofetch
     kdiff3
     kdePackages.kompare
-
-    # display (wireless display)
-#     gnome-network-displays
-#     xdg-desktop-portal-gnome
-#     kdePackages.plasma-nm
 
     # Office suit
     libreoffice
@@ -240,7 +245,7 @@
 
     # --TEMP
     #teamviewer
-    piper-tts
+    # piper-tts # AI Text-to-Speach
 
     unzip
     unrar
@@ -250,16 +255,17 @@
     gittyup
     jre_minimal
     home-manager
+
     # nix helpers
     nix-output-monitor
     nvd
+
     # LSP for nix
     nixd
-    # hardinfo2
+
     # Media
     vlc
     ffmpeg
-    #ytmdesktop
     gimp
     virt-manager
   ])
@@ -271,7 +277,6 @@
   ]);
 
   fonts.packages = with pkgs; [
-#     nerd-fonts.symbols-only
     font-awesome
     powerline-fonts
   ];
@@ -281,8 +286,6 @@
   xdg.portal.enable = true;
   xdg.portal.xdgOpenUsePortal = true;
   xdg.portal.extraPortals = [
-#     pkgs.xdg-desktop-portal-gnome
-#     pkgs.xdg-desktop-portal-wlr   # if you’re on a wl roots environment
    pkgs.kdePackages.xdg-desktop-portal-kde
   ];
   networking.firewall = {

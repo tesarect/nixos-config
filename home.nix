@@ -1,8 +1,7 @@
 { config, pkgs, systemSettings, userSettings, inputs, sopsNixHmModule, ... }:
 
 let
-  ### - Temp install for older version of rpi-imager
-  # https://lazamar.co.uk/nix-versions/?package=rpi-imager&version=1.7.3&fullName=rpi-imager-1.7.3&keyName=rpi-imager&revision=55070e598e0e03d1d116c49b9eff322ef07c6ac6&channel=nixpkgs-unstable#instructions
+
   legacyPkgs = import (fetchTarball {
 
     # V 1.7.3
@@ -58,11 +57,6 @@ in {
     enableZshIntegration = true;
   };
 
-#   programs = {
-#     neovim.enable = false;
-#   };
-#   programs.nvf.vim = import ./editors/nvf/default.nix { inherit config pkgs; };
-
   programs.librewolf = {
     enable = true;
     # Enable WebGL, cookies and history
@@ -93,10 +87,7 @@ in {
     emacs
     tmux
     htop
-    ytmdesktop
-    # yt-dlp
-    # headset
-    youtube-music
+    pear-desktop
     discord
     pdfmixtool
     obsidian
@@ -121,8 +112,6 @@ in {
     termshark
     #netdiscover
     filezilla
-
-    #labplot
 
     # temps
     #legacyPkgs.rpi-imager
