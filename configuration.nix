@@ -223,7 +223,7 @@
   environment.systemPackages =
   ( with pkgs; [
     # list of unstable packages
-    ghostty
+#     ghostty
     vim
     wl-clipboard
     maliit-keyboard
@@ -234,7 +234,7 @@
     # Office suit
     libreoffice
 
-    labplot
+#     labplot
 
     # Browser
     brave
@@ -268,6 +268,8 @@
     ffmpeg
     gimp
     virt-manager
+
+    anydesk
   ])
   ++
   ( with pkgs-unstable; [

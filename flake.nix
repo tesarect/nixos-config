@@ -12,7 +12,7 @@
 
     sops-nix.url = "github:Mic92/sops-nix";
     nvf.url = "github:notashelf/nvf";
-    ghostty.url = "github:ghostty-org/ghostty";
+#     ghostty.url = "github:ghostty-org/ghostty";
   };
 
   outputs = {
@@ -22,7 +22,7 @@
               home-manager,
               sops-nix,
               nvf,
-              ghostty,
+#               ghostty,
               ...
             }@inputs:
     let
@@ -65,7 +65,7 @@
           home-manager.nixosModules.home-manager
           ({ pkgs, ... }: {
             environment.systemPackages = [
-              ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
+#               ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
             ];
           })
           {

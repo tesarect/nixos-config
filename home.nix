@@ -84,7 +84,7 @@ in {
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     hello
-    emacs
+#     emacs
     tmux
     htop
     pear-desktop
